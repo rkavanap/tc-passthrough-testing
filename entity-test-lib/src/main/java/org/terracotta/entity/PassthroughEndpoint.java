@@ -153,7 +153,12 @@ public class PassthroughEndpoint<M extends EntityMessage, R extends EntityRespon
         return new ImmediateInvokeFuture<R>(codec.decodeResponse(result), error);
       }
     }
-    
+
+    @Override
+    public void invokeWithCallBack(MessageCallback<R> messageCallBack) throws MessageCodecException {
+      throw new RuntimeException("Not Implemented");
+    }
+
     private byte[] sendInvocation(byte[] payload) throws EntityException {
       byte[] result = null;
       try {

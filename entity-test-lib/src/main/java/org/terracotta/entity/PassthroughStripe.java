@@ -402,7 +402,12 @@ public class PassthroughStripe<M extends EntityMessage, R extends EntityResponse
       }
       return new ImmediateInvokeFuture<R>(codec.decodeResponse(result), error);
     }
-    
+
+    @Override
+    public void invokeWithCallBack(MessageCallback<R> messageCallBack) throws MessageCodecException {
+      throw new RuntimeException("Not Implemented");
+    }
+
     private byte[] sendInvocation(long currentId, long eldestId, ActiveServerEntity<M, R> entity, MessageCodec<M, R>
       codec) throws EntityException {
       byte[] result = null;

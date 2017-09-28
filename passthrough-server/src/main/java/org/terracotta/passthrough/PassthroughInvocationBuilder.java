@@ -22,6 +22,7 @@ import org.terracotta.entity.InvocationBuilder;
 import org.terracotta.entity.InvokeFuture;
 import org.terracotta.entity.EntityMessage;
 import org.terracotta.entity.EntityResponse;
+import org.terracotta.entity.MessageCallback;
 import org.terracotta.entity.MessageCodec;
 import org.terracotta.entity.MessageCodecException;
 import org.terracotta.exception.EntityException;
@@ -140,6 +141,11 @@ public class PassthroughInvocationBuilder<M extends EntityMessage, R extends Ent
         invokeFuture.interrupt();
       }
     };
+  }
+
+  @Override
+  public void invokeWithCallBack(MessageCallback<R> messageCallBack) throws MessageCodecException {
+    throw new RuntimeException("Not Implemented");
   }
 
 }
